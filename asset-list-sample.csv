@@ -1,0 +1,4 @@
+hostname,IP,OS
+demo.botprise.com,104.247.112.45,Linux
+prod.botprise.com,200.211.22.44,windows
+samplepod.botprise.com,33.221.143.32,linux
