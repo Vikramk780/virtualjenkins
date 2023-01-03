@@ -17,24 +17,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TicketExecutionPage {
-	private static WebDriver driver;
-
-	public static WebElement explicitlywaitt(By propertiesBtn2) {
-
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(propertiesBtn2));
-		// click on the compose button as soon as the "compose" button is visible
-		WebElement compnamefromlocator = driver.findElement(propertiesBtn2);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return compnamefromlocator;
-
-	}
+	private WebDriver driver;
+	Waithelper waithelper;
 
 	private String ticketIdNumber;
 
@@ -72,6 +56,7 @@ public class TicketExecutionPage {
 	public TicketExecutionPage(WebDriver driver) {
 
 		this.driver = driver;
+		waithelper = new Waithelper(driver);
 	}
 
 	public void enterUrlserviceNow(String url) {
@@ -117,15 +102,6 @@ public class TicketExecutionPage {
 		ticketIdNumber = (String) contents.getTransferData(DataFlavor.stringFlavor);
 		System.out.println("//div[contains(text(),'" + ticketIdNumber + "')]");
 
-//		  driver.findElement(shortdescription).sendKeys(description);
-//		  
-//		  
-//		  WebDriverWait wait = new WebDriverWait(driver, 30);
-//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//textarea[@id='incident.description']")));
-//			// click on the compose button as soon as the "compose" button is visible
-//			WebElement compnamefromlocator1 = driver.findElement(By.xpath("//textarea[@id='incident.description']"));
-//			compnamefromlocator1.sendKeys(description);
-
 		if (namee.equals("createuser")) {
 
 			String s = RandomStringUtils.random(4, "test");
@@ -135,7 +111,7 @@ public class TicketExecutionPage {
 			String lastname = firstname.replace("test2", "test" + s1);
 			String email = lastname.replace("test", "user" + s1);
 			String email1 = email.replace("round", "user" + s1);
-           System.out.println(email1);
+			System.out.println(email1);
 			driver.findElement(shortdescription).sendKeys(email1);
 			driver.findElement(descriptionn).sendKeys(email1);
 
@@ -209,10 +185,9 @@ public class TicketExecutionPage {
 		Thread.sleep(2000);
 
 	}
-	
+
 	public void entersDescription2() throws InterruptedException, UnsupportedFlavorException, IOException {
 
-		
 		driver.findElement(newbtn).click();
 
 		driver.findElement(ticketid).click();
@@ -231,28 +206,6 @@ public class TicketExecutionPage {
 		Thread.sleep(2000);
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	//////////////////////////////////////////////////////////
 
@@ -288,7 +241,7 @@ public class TicketExecutionPage {
 		js.executeScript("window.scrollBy(0,-100)", "");
 		Thread.sleep(7000);
 
-		String output = explicitlywaitt(successbtn).getText();
+		String output = waithelper.forThisElementWait(successbtn, 20).getText();
 
 		System.out.println(output);
 		return output;

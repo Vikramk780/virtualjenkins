@@ -9,18 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegistrationPage {
-	private static WebDriver driver;
-
-	public static WebElement explicitlywaitt(By propertiesBtn2) {
-
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(propertiesBtn2));
-		// click on the compose button as soon as the "compose" button is visible
-		WebElement compnamefromlocator = driver.findElement(propertiesBtn2);
-
-		return compnamefromlocator;
-
-	}
+	private WebDriver driver;
+	Waithelper waithelper;
 
 	private static String randometext = RandomStringUtils.random(4, "Usernaame");
 	private By signupbtn = By.xpath("//a[normalize-space()='Sign Up']");
@@ -46,26 +36,24 @@ public class RegistrationPage {
 	public RegistrationPage(WebDriver driver) {
 
 		this.driver = driver;
+		waithelper = new Waithelper(driver);
 	}
 
 	public void UserFillsResistrationForm() throws InterruptedException {
 		String randomemail = RandomStringUtils.random(4, "abcdabcd");
-		explicitlywaitt(email).click();
-		explicitlywaitt(email).sendKeys("vikram.kambletest" + randomemail + "@botprise.com");
+		waithelper.forThisElementWait(email, 20).click();
+		waithelper.forThisElementWait(email, 20).sendKeys("vikram.kambletest" + randomemail + "@botprise.com");
 		randometext = RandomStringUtils.random(4, "cbvnvm");
 		driver.findElement(firstname).sendKeys("User" + randometext);
 		driver.findElement(lastname).sendKeys("Latname" + randometext);
-
 		driver.findElement(comapny).sendKeys("comapnay" + randometext);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,250)", "");
 		Thread.sleep(1000);
-
 		driver.findElement(designation).sendKeys("Designation" + randometext);
 		driver.findElement(password).sendKeys("Zz@12345");
 		driver.findElement(radiobtn).click();
 		driver.findElement(confirmpassword).sendKeys("Zz@12345");
-
 		driver.findElement(submitbtn).click();
 		Thread.sleep(1000);
 		driver.findElement(submitbtn).click();
@@ -75,7 +63,6 @@ public class RegistrationPage {
 
 	public String getsuccessMsg() {
 		String userconfirmationlink = driver.findElement(successmsg).getText();
-
 		return userconfirmationlink;
 	}
 

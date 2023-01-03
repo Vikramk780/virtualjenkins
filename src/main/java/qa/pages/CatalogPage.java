@@ -3,45 +3,15 @@ package qa.pages;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.time.Duration;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CatalogPage {
 
-	public static WebElement fluentwaitt(By propertiesBtn2) throws InterruptedException {
-		Wait<WebDriver> wait1 = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
-		wait1.until(ExpectedConditions.visibilityOfElementLocated(propertiesBtn2));
-		WebElement compnamefromlocator = driver.findElement(propertiesBtn2);
-
-		Thread.sleep(1500);
-
-		return compnamefromlocator;
-
-	}
-
-//	public static WebElement explicitlywaitt(By propertiesBtn2) throws InterruptedException {
-//		WebDriverWait wait = new WebDriverWait(driver, 40);
-//		wait.until(ExpectedConditions.visibilityOfElementLocated(propertiesBtn2));
-//		// click on the compose button as soon as the "compose" button is visible
-//		WebElement compnamefromlocator = driver.findElement(propertiesBtn2);
-//		
-//		Thread.sleep(3000);
-//
-//		return compnamefromlocator;
-//
-//	}
-
-	private static WebDriver driver;
+	private WebDriver driver;
+	Waithelper waithelper;
 
 	private By templateslection = By.xpath(
 			"/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/div[3]/table[1]/tbody[1]/tr[1]/td[1]/div[1]");
@@ -74,43 +44,43 @@ public class CatalogPage {
 	public CatalogPage(WebDriver driver) {
 
 		this.driver = driver;
+		waithelper = new Waithelper(driver);
 	}
 
 	public void selectTemplate() throws InterruptedException {
-		
-		
-		fluentwaitt(templateslection).click();
+
+		waithelper.forThisElementWait(templateslection, 20).click();
 	}
 
 	public void clickOnShowAction() throws InterruptedException {
-		fluentwaitt(actionDropDown).click();
-		fluentwaitt(showTemplate).click();
+		waithelper.forThisElementWait(actionDropDown, 20).click();
+		waithelper.forThisElementWait(showTemplate, 20).click();
 	}
 
 	public void verifyTemplatesSlectedViewpopup() throws InterruptedException {
-		fluentwaitt(selectedTemplateviewpopuptext).click();
+		waithelper.forThisElementWait(selectedTemplateviewpopuptext, 20).click();
 	}
 
 	public String launchinStudio() throws InterruptedException, AWTException {
-		fluentwaitt(actionDropDown).click();
-		fluentwaitt(launchinStudioactionBtn).click();
-		fluentwaitt(afterlaunchnextbtn).click();
-		fluentwaitt(ticketingtoolsdrop).click();
-		fluentwaitt(ticketingtoolsselect).click();
-		fluentwaitt(integrationselectbtndrop).click();
-		fluentwaitt(adminintegration).click();
-		fluentwaitt(btudropdown).click();
-		fluentwaitt(btuselect).click();
-		fluentwaitt(afterlaunchnextbtn).click();
-		fluentwaitt(studioactionDropDown).click();
-		fluentwaitt(propertiesbtn).click();
+		waithelper.forThisElementWait(actionDropDown, 20).click();
+		waithelper.forThisElementWait(launchinStudioactionBtn, 20).click();
+		waithelper.forThisElementWait(afterlaunchnextbtn, 20).click();
+		waithelper.forThisElementWait(ticketingtoolsdrop, 20).click();
+		waithelper.forThisElementWait(ticketingtoolsselect, 20).click();
+		waithelper.forThisElementWait(integrationselectbtndrop, 20).click();
+		waithelper.forThisElementWait(adminintegration, 20).click();
+		waithelper.forThisElementWait(btudropdown, 20).click();
+		waithelper.forThisElementWait(btuselect, 20).click();
+		waithelper.forThisElementWait(afterlaunchnextbtn, 20).click();
+		waithelper.forThisElementWait(studioactionDropDown, 20).click();
+		waithelper.forThisElementWait(propertiesbtn, 20).click();
 
 		String randometext2 = RandomStringUtils.random(4, "_abc");
 		String randometext = RandomStringUtils.random(4, "automation_");
 		String textt = "test_Automation".concat(randometext);
-		fluentwaitt(workflowname).sendKeys(textt + "test" + randometext2);
-		fluentwaitt(workflowdescrip).sendKeys(textt);
-		fluentwaitt(integrationdrop).click();
+		waithelper.forThisElementWait(workflowname, 20).sendKeys(textt + "test" + randometext2);
+		waithelper.forThisElementWait(workflowdescrip, 20).sendKeys(textt);
+		waithelper.forThisElementWait(integrationdrop, 20).click();
 
 		Robot r = new Robot();
 		r.keyPress(KeyEvent.VK_DOWN);
@@ -120,10 +90,10 @@ public class CatalogPage {
 		r.keyRelease(KeyEvent.VK_ENTER);
 		Thread.sleep(2000);
 
-		fluentwaitt(afterlaunchnextbtn).click();
+		waithelper.forThisElementWait(afterlaunchnextbtn, 20).click();
 
-//		fluentwaitt(autocheckout).click();
-//		fluentwaitt(savebtn).click();
+//		waithelper.forThisElementWait(autocheckout).click();
+//		waithelper.forThisElementWait(savebtn).click();
 		String successmsgfromstudio = driver.findElement(workflowsavesuccessmdg).getText();
 		Thread.sleep(1000);
 

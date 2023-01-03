@@ -6,47 +6,18 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.time.Duration;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SmartDesignStudioPage {
-	private static WebDriver driver;
+	private WebDriver driver;
+	Waithelper waithelper;
 	private static String randomenamewithTestText111;
 
-	private static String propertiesworkflownametext;
-
-	public static WebElement fluentwaitt(By propertiesBtn2) throws InterruptedException {
-		Wait<WebDriver> wait1 = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
-		wait1.until(ExpectedConditions.visibilityOfElementLocated(propertiesBtn2));
-		WebElement compnamefromlocator = driver.findElement(propertiesBtn2);
-
-		Thread.sleep(1100);
-
-		return compnamefromlocator;
-
-	}
-
-//	public static WebElement explicitlywaitt(By propertiesBtn2) {
-//
-//		WebDriverWait wait = new WebDriverWait(driver, 40);
-//		wait.until(ExpectedConditions.visibilityOfElementLocated(propertiesBtn2));
-//		// click on the compose button as soon as the "compose" button is visible
-//		WebElement compnamefromlocator = driver.findElement(propertiesBtn2);
-//
-//		return compnamefromlocator;
-//
-//	}
+	private String propertiesworkflownametext;
 
 	private By workflowSelection = By.xpath(
 			"/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/table[1]/tbody[1]/tr[1]/td[1]/div[1]");
@@ -83,11 +54,12 @@ public class SmartDesignStudioPage {
 
 	public SmartDesignStudioPage(WebDriver driver) {
 		this.driver = driver;
+		waithelper = new Waithelper(driver);
 	}
 
 	public void viewWorkflow() throws InterruptedException {
 		driver.navigate().refresh();
-		fluentwaitt(workflowSelection).click();
+		waithelper.forThisElementWait(workflowSelection, 20).click();
 		driver.findElement(actionDropDown).click();
 		Thread.sleep(3000);
 		driver.findElement(viewbtn).click();
@@ -103,10 +75,10 @@ public class SmartDesignStudioPage {
 
 	public void propertiChange() throws UnsupportedFlavorException, IOException, InterruptedException {
 
-		fluentwaitt(workflowSelection).click();
-		fluentwaitt(actionDropDown).click();
+		waithelper.forThisElementWait(workflowSelection, 20).click();
+		waithelper.forThisElementWait(actionDropDown, 20).click();
 
-		fluentwaitt(propertiesBtn).click();
+		waithelper.forThisElementWait(propertiesBtn, 20).click();
 
 		driver.findElement(propertiesworkflowname).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 		driver.findElement(propertiesworkflowname).sendKeys(Keys.chord(Keys.CONTROL, "c"));
@@ -137,11 +109,11 @@ public class SmartDesignStudioPage {
 	}
 
 	public void restorePropertiesChange() throws InterruptedException, UnsupportedFlavorException, IOException {
-		fluentwaitt(workflowSelection).click();
-		fluentwaitt(actionDropDown).click();
+		waithelper.forThisElementWait(workflowSelection, 20).click();
+		waithelper.forThisElementWait(actionDropDown, 20).click();
 		Thread.sleep(2000);
 
-		fluentwaitt(propertiesBtn).click();
+		waithelper.forThisElementWait(propertiesBtn, 20).click();
 		Thread.sleep(3000);
 		System.out.println(propertiesworkflownametext);
 		driver.findElement(propertiesworkflowname).clear();
@@ -160,18 +132,18 @@ public class SmartDesignStudioPage {
 	}
 
 	public void CloneWorkflow() throws InterruptedException {
-		fluentwaitt(workflowSelection).click();
-		fluentwaitt(actionDropDown).click();
-		fluentwaitt(clonebtn).click();
+		waithelper.forThisElementWait(workflowSelection, 20).click();
+		waithelper.forThisElementWait(actionDropDown, 20).click();
+		waithelper.forThisElementWait(clonebtn, 20).click();
 		String alphabet = "abc";
 		String s = RandomStringUtils.random(8, alphabet);
 
 		randomenamewithTestText111 = "clone".concat(s);
 		Thread.sleep(2000);
-		fluentwaitt(nametocloneWorkflow).sendKeys(randomenamewithTestText111);
-		fluentwaitt(descriptiontocloneWorkflow).sendKeys(randomenamewithTestText111);
-		fluentwaitt(savebtnofproperties).click();
-		fluentwaitt(cloneclosebtn).click();
+		waithelper.forThisElementWait(nametocloneWorkflow, 20).sendKeys(randomenamewithTestText111);
+		waithelper.forThisElementWait(descriptiontocloneWorkflow, 20).sendKeys(randomenamewithTestText111);
+		waithelper.forThisElementWait(savebtnofproperties, 20).click();
+		waithelper.forThisElementWait(cloneclosebtn, 20).click();
 		driver.navigate().refresh();
 		Thread.sleep(3000);
 
@@ -180,10 +152,10 @@ public class SmartDesignStudioPage {
 	}
 
 	public String deleteClonedOne() throws InterruptedException {
-		fluentwaitt(locatorforautualworkflowname).click();
-		fluentwaitt(actionDropDown).click();
+		waithelper.forThisElementWait(locatorforautualworkflowname, 20).click();
+		waithelper.forThisElementWait(actionDropDown, 20).click();
 
-		fluentwaitt(deletBtn).click();
+		waithelper.forThisElementWait(deletBtn, 20).click();
 
 		String successfullmsg = driver.findElement(deletionsuccessfullmsg).getText();
 
@@ -192,16 +164,16 @@ public class SmartDesignStudioPage {
 	}
 
 	public String EditWorkflow() throws InterruptedException {
-		fluentwaitt(workflowSelection).click();
+		waithelper.forThisElementWait(workflowSelection, 20).click();
 		driver.findElement(actionDropDown).click();
 		Thread.sleep(3000);
 		driver.findElement(editbtn).click();
 
 		Thread.sleep(4000);
-		fluentwaitt(studioactionDropDown).click();
-		fluentwaitt(stdioworkflowsavebtn).click();
+		waithelper.forThisElementWait(studioactionDropDown, 20).click();
+		waithelper.forThisElementWait(stdioworkflowsavebtn, 20).click();
 		String successmsgfromstudio = driver.findElement(workflowsavesuccessmdg).getText();
-		System.out.println("This is successfull saved text from get text"+successmsgfromstudio);
+		System.out.println("This is successfull saved text from get text" + successmsgfromstudio);
 		Thread.sleep(1000);
 
 		return successmsgfromstudio;
