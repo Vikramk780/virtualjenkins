@@ -16,7 +16,7 @@ public class SecurityManageMentPage {
 	private By addbtn2 = By.xpath("(//p[contains(text(),\"Add\")])[3]");
 	private By text = By.xpath("(//li[contains(text(),\"Text\")])[1]");
 	private By filebtn = By.xpath("(//li[contains(text(),\"File\")])[1]");
-	private By securitymanagerdrop = By.xpath("//div[@id='security_manager']");
+	private By securitymanagerdrop = By.xpath("//input[@id='security_manager']");
 	private By vault = By.xpath("//li[@role='option']");
 	private By nameofsecret = By.xpath("//input[@id='name']");
 	private By textofsecret = By.xpath("//input[@id='file']");
