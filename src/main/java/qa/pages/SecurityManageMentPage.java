@@ -29,7 +29,7 @@ public class SecurityManageMentPage {
 	private By windowsdomain = By.xpath("//input[@id='domain']");
 	private By username = By.xpath("//input[@id='user_name']");
 	private By secretsdrop = By.xpath("//input[@id='secrets']");
-	private By connectionType = By.xpath("//div[@id='connection_type']");
+	private By connectionType = By.xpath("//input[@id='connection_type']");
 	private By ssh = By.xpath("//li[normalize-space()='SSH']");
 	private By port = By.xpath("//input[@id='port']");
 	private By authscema = By.xpath("//input[@id='auth_scheme']");
