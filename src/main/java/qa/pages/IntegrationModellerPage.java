@@ -20,7 +20,7 @@ public class IntegrationModellerPage {
 			.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]");
 	private By name = By.xpath("(//input[@id='name'])[2]");
 
-	private By typeDrope = By.xpath("(//div[@id='type'])[2]");
+	private By typeDrope = By.xpath("(//input[@id='type'])[2]");
 
 	private By itsmvalue = By.xpath("//li[11]");
 	private By selecttypeDrope = By.xpath("(//input[@type='checkbox'])[27]");
