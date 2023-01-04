@@ -224,22 +224,24 @@ public class BauModellerPage {
 		String original = name1 + nameofBAu;
 		fluentwaitt.forThisElementWait(functName, 15).sendKeys(original);
 		fluentwaitt.forThisElementWait(descriptiond, 15).sendKeys("Test_" + original);
-
+                Actions act = new Actions(driver);
 		fluentwaitt.forThisElementWait(inputparams, 15).sendKeys("Description");
-		r.keyPress(KeyEvent.VK_ENTER);
-		r.keyRelease(KeyEvent.VK_ENTER);
+		
+		act.sendKeys(Keys.ENTER).build().perform();
+
 		Thread.sleep(500);
 		fluentwaitt.forThisElementWait(inputparams, 15).sendKeys("short_description");
-		r.keyPress(KeyEvent.VK_ENTER);
-		r.keyRelease(KeyEvent.VK_ENTER);
+		act.sendKeys(Keys.ENTER).build().perform();
+		
 		Thread.sleep(500);
 		fluentwaitt.forThisElementWait(inputparams, 15).sendKeys("caller_id");
-		r.keyPress(KeyEvent.VK_ENTER);
-		r.keyRelease(KeyEvent.VK_ENTER);
+		act.sendKeys(Keys.ENTER).build().perform();
+		
 		Thread.sleep(500);
 		fluentwaitt.forThisElementWait(curltest, 15).sendKeys(
 				"curl -XPOST -H \"Content-type: application/json\" -d '{\"caller_id\":\"$caller_id\",\"short_description\":\"$short_description\",\"description\":\"$Description\"}' 'https://$servicenow_instance/api/now/table/incident' -u $username:'$password'");
 
+		Thread.sleep(500);
 		fluentwaitt.forThisElementWait(bauSave, 20).click();
 		Thread.sleep(500);
 		fluentwaitt.forThisElementWait(integrationinstancedrop, 23).click();
