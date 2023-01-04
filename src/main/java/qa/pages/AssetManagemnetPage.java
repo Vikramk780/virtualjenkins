@@ -69,13 +69,7 @@ public class AssetManagemnetPage {
 		waithelper.forThisElementWait(savebtn, 20).click();
 		Thread.sleep(3000);
 
-		waithelper.forThisElementWait(searchbar, 20).click();
-		Thread.sleep(2000);
-
-		waithelper.forThisElementWait(searchbartextfield, 20).sendKeys(randomeBTUname);
-		Thread.sleep(2000);
-		waithelper.forThisElementWait(select, 20).click();
-		Thread.sleep(2000);
+		
 
 	}
 
