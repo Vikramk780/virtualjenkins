@@ -174,7 +174,7 @@ public class BauModellerPage {
 
 		driver.findElement(nextbtn).click();
 		Thread.sleep(3000);
-		driver.findElement(integrationinstancedrop).click();
+		fluentwaitt.forThisElementWait(integrationinstancedrop,20).click();
 		Thread.sleep(3000);
 		fluentwaitt.forThisElementWait(botprisestaging, 15).click();
 		Thread.sleep(3000);
@@ -241,7 +241,8 @@ public class BauModellerPage {
 				"curl -XPOST -H \"Content-type: application/json\" -d '{\"caller_id\":\"$caller_id\",\"short_description\":\"$short_description\",\"description\":\"$Description\"}' 'https://$servicenow_instance/api/now/table/incident' -u $username:'$password'");
 
 		fluentwaitt.forThisElementWait(bauSave, 20).click();
-		fluentwaitt.forThisElementWait(integrationinstancedrop, 20).click();
+		Thread.sleep(500);
+		fluentwaitt.forThisElementWait(integrationinstancedrop, 23).click();
 
 		fluentwaitt.forThisElementWait(selectservicenowinstance, 20).click();
 
