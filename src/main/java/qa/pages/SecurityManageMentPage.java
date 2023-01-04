@@ -56,7 +56,7 @@ public class SecurityManageMentPage {
 		waithelper.forThisElementWait(securitymanagerdrop, 15).click();
 		waithelper.forThisElementWait(vault, 15).click();
 
-		String randomeBTUname = RandomStringUtils.random(4, "aba_cd");
+		String randomeBTUname = RandomStringUtils.random(4, "aqba_cd");
 		String randomeBTUname1 = "secret".concat(randomeBTUname + "te_lst");
 
 		waithelper.forThisElementWait(nameofsecret, 15).sendKeys(randomeBTUname1);
@@ -110,7 +110,7 @@ public class SecurityManageMentPage {
 		waithelper.forThisElementWait(windowscreds, 15).click();
 
 		String randomeBTUname11 = RandomStringUtils.random(4, "abcd");
-		String randomeBTUname11aa = "test_windows".concat(randomeBTUname11 + "test");
+		String randomeBTUname11aa = "test_windowsc".concat(randomeBTUname11 + "test");
 		waithelper.forThisElementWait(nameofsecret, 15).sendKeys(randomeBTUname11aa);
 		waithelper.forThisElementWait(authscemen, 15).click();
 		waithelper.forThisElementWait(vault, 15).click();
@@ -129,7 +129,7 @@ public class SecurityManageMentPage {
 		waithelper.forThisElementWait(terminalcreds, 15).click();
 
 		String randomeBTUname11 = RandomStringUtils.random(4, "abcd");
-		String randomeBTUname11aa = "test_Terminal".concat(randomeBTUname11 + "teso_t");
+		String randomeBTUname11aa = "test_Terminalc".concat(randomeBTUname11 + "teso_t");
 
 		waithelper.forThisElementWait(nameofsecret, 15).sendKeys(randomeBTUname11aa);
 
