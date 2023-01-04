@@ -6,7 +6,9 @@ import java.awt.event.KeyEvent;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class BauModellerPage {
 	WebDriver driver;
@@ -224,7 +226,15 @@ public class BauModellerPage {
 		String original = name1 + nameofBAu;
 		fluentwaitt.forThisElementWait(functName, 15).sendKeys(original);
 		fluentwaitt.forThisElementWait(descriptiond, 15).sendKeys("Test_" + original);
-                Actions act = new Actions(driver);
+		
+		Actions act = new Actions(driver);
+		
+//       act.moveToElement(fluentwaitt.forThisElementWait(inputparams, 15)).sendKeys("Description").sendKeys(Keys.ENTER).build().perform();
+//       Thread.sleep(500);
+//       act.moveToElement(fluentwaitt.forThisElementWait(inputparams, 15)).sendKeys("short_description").sendKeys(Keys.ENTER).build().perform();
+//       Thread.sleep(500);
+//       act.moveToElement(fluentwaitt.forThisElementWait(inputparams, 15)).sendKeys("short_description").sendKeys(Keys.ENTER).build().perform();
+		
 		fluentwaitt.forThisElementWait(inputparams, 15).sendKeys("Description");
 		
 		act.sendKeys(Keys.ENTER).build().perform();
