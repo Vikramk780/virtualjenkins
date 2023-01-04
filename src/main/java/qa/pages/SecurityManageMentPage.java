@@ -25,16 +25,16 @@ public class SecurityManageMentPage {
 	private By linkmanagement = By.xpath("//a[normalize-space()='Security Management']");
 	private By windowscreds = By.xpath("//body[1]/div[5]/div[3]/ul[1]/li[2]");
 	private By terminalcreds = By.xpath("(//li[@role='menuitem'][normalize-space()='Terminal'])[1]");
-	private By authscemen = By.xpath("//div[@id='auth_scheme']");
+	private By authscemen = By.xpath("//input[@id='auth_scheme']");
 	private By windowsdomain = By.xpath("//input[@id='domain']");
 	private By username = By.xpath("//input[@id='user_name']");
 	private By secretsdrop = By.xpath("//input[@id='secrets']");
 	private By connectionType = By.xpath("//div[@id='connection_type']");
 	private By ssh = By.xpath("//li[normalize-space()='SSH']");
 	private By port = By.xpath("//input[@id='port']");
-	private By authscema = By.xpath("//div[@id='auth_scheme']");
+	private By authscema = By.xpath("//input[@id='auth_scheme']");
 	private By sshauth = By.xpath("//li[normalize-space()='SSH Password/Key']");
-	private By passphras = By.xpath("//div[@id='passphrase']");
+	private By passphras = By.xpath("//input[@id='passphrase']");
 	private By passphrasselect = By.xpath("//li[@role='option']");
 	private By selectsecrete = By.xpath("//li[contains(text(),\"TestTextFile\")]");
 
