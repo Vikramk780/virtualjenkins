@@ -19,7 +19,7 @@ public class AssetManagemnetPage {
 
 	private By devicename = By.xpath("//input[@id='device_list_name']");
 	private By description = By.xpath("//input[@id='description']");
-	private By devicetype = By.xpath("//div[@id='device_type']");
+	private By devicetype = By.xpath("//input[@id='device_type']");
 	private By alkatel = By.xpath("//li[normalize-space()='Alcatel']");
 	private By choosebtn = By.xpath("//label[@for='item']");
 	private By savebtn = By.xpath("//button[@type='submit']");
