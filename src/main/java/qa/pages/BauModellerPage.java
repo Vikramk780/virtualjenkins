@@ -203,7 +203,7 @@ public class BauModellerPage {
 		Thread.sleep(15000);
 		driver.findElement(checkboxaccept).click();
 		Thread.sleep(2000);
-		driver.findElement(bauSave).click();
+		fluentwaitt.forThisElementWait(bauSave,25).click();
 		Thread.sleep(5000);
 
 	}
