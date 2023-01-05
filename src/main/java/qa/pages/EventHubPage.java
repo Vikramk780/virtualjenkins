@@ -45,7 +45,7 @@ public class EventHubPage {
 	public void createBTU() throws InterruptedException, AWTException {
 
 		Thread.sleep(4000);
-		waithelper.forThisElementWait(By.xpath("(//*[local-name()='svg' and @class=\"MuiSvgIcon-root\"])[21]"),15).click();
+		waithelper.forThisElementWait(By.xpath("(//*[local-name()='svg' and @class=\"MuiSvgIcon-root\"])[21]"),30).click();
 		Thread.sleep(3000);
 
 		driver.findElement(By.xpath("//button[@aria-label='Search']")).sendKeys("create S3");
