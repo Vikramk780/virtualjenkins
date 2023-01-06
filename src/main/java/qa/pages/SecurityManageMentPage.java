@@ -51,10 +51,10 @@ public class SecurityManageMentPage {
 
 	public void createsecrete() throws InterruptedException {
 
-		waithelper.forThisElementWait(addbtn, 10).click();
-		waithelper.forThisElementWait(text, 10).click();
-		waithelper.forThisElementWait(securitymanagerdrop, 15).click();
-		waithelper.forThisElementWait(vault, 15).click();
+		waithelper.forThisElementWait(addbtn, 25).click();
+		waithelper.forThisElementWait(text, 25).click();
+		waithelper.forThisElementWait(securitymanagerdrop, 25).click();
+		waithelper.forThisElementWait(vault, 25).click();
 
 		String randomeBTUname = RandomStringUtils.random(4, "aqba_cd");
 		String randomeBTUname1 = "secret".concat(randomeBTUname + "te_lst");
