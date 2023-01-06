@@ -84,18 +84,22 @@ public class IntegrationModellerPage {
 		driver.findElement(supportVersion).sendKeys("1.1");
 		r.keyPress(KeyEvent.VK_ENTER);
 		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(500);
 
 		waithelper.forThisElementWait(variableDefination, 20).sendKeys("servicenow_instance");
 		r.keyPress(KeyEvent.VK_ENTER);
 		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(1000);
 
 		waithelper.forThisElementWait(variableDefination, 20).sendKeys("username");
 		r.keyPress(KeyEvent.VK_ENTER);
 		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(1000);
 
 		waithelper.forThisElementWait(variableDefination, 20).sendKeys("password");
 		r.keyPress(KeyEvent.VK_ENTER);
 		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(1000);
 
 		waithelper.forThisElementWait(categorydrop, 20).click();
 		r.keyPress(KeyEvent.VK_DOWN);
