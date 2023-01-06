@@ -137,7 +137,7 @@ public class IntegrationModellerPage {
 		rr.keyRelease(KeyEvent.VK_ENTER);
 		Thread.sleep(2000);
 
-		waithelper.forThisElementWait(uploadbtn,20).click();
+		waithelper.forThisElementWait(uploadbtn,30).click();
 		Thread.sleep(3000);
 
 		driver.findElement(testBTN).click();
